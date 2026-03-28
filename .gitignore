@@ -35,3 +35,4 @@ next-env.d.ts
 
 # raw data (large files)
 data/raw/
+data/census/raw

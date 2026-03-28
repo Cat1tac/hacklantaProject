@@ -3,27 +3,40 @@ import { scoreCorridors } from '@/lib/scoring/engine';
 import { getCached, setCached, corridorCacheKey, coordsCacheKey } from '@/lib/cache/kv';
 import { getFallback } from '@/lib/cache/fallback';
 import { fetchDynamicCensusTracts, aggregateDynamicMetrics } from '@/lib/census/dynamic-fetcher';
+import { getTractsForCounty, aggregateTracts } from '@/lib/census/csv-loader';
 import type { CorridorScore, ScoringInput } from '@/lib/scoring/types';
 
-// Pre-computed corridor demand data for preset corridors (fast path)
-const CORRIDOR_DEMAND: Record<string, ScoringInput> = {
-  'corridor-1': {
-    corridorId: 'corridor-1',
-    zeroCar: 38, employment: 3200, poverty: 28, foodDesert: 1,
-  },
-  'corridor-2': {
-    corridorId: 'corridor-2',
-    zeroCar: 52, employment: 4100, poverty: 42, foodDesert: 1,
-  },
-  'corridor-3': {
-    corridorId: 'corridor-3',
-    zeroCar: 35, employment: 2800, poverty: 36, foodDesert: 1,
-  },
-  'corridor-4': {
-    corridorId: 'corridor-4',
-    zeroCar: 58, employment: 3600, poverty: 45, foodDesert: 1,
-  },
+/**
+ * Preset corridor center coordinates and county FIPS.
+ * Used to look up real Census data from local CSVs.
+ */
+const PRESET_CORRIDORS: Record<string, { lat: number; lng: number; state: string; county: string }> = {
+  'corridor-1': { lat: 33.7325, lng: -84.2522, state: '13', county: '089' }, // South DeKalb — DeKalb County
+  'corridor-2': { lat: 33.7625, lng: -84.4090, state: '13', county: '121' }, // English Ave — Fulton County
+  'corridor-3': { lat: 33.7350, lng: -84.3975, state: '13', county: '121' }, // Mechanicsville — Fulton County
+  'corridor-4': { lat: 33.8150, lng: -84.2525, state: '13', county: '089' }, // Clarkston — DeKalb County
 };
+
+/**
+ * Builds a ScoringInput from Census CSV data for a given county.
+ */
+function buildScoringInputFromCSV(
+  corridorId: string,
+  state: string,
+  county: string
+): ScoringInput | null {
+  const tracts = getTractsForCounty(state, county);
+  if (tracts.length === 0) return null;
+
+  const metrics = aggregateTracts(tracts);
+  return {
+    corridorId,
+    zeroCar: metrics.zeroCar,
+    employment: metrics.employment,
+    poverty: metrics.poverty,
+    foodDesert: metrics.foodDesert,
+  };
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,7 +54,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Determine cache key — coordinate-based for searches, ID-based for presets
+    // Determine cache key
     const cacheKey = center
       ? coordsCacheKey(center, 'analysis')
       : corridorCacheKey(corridorId, 'analysis');
@@ -52,20 +65,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(cached);
     }
 
-    // === PRESET CORRIDOR (fast path) ===
-    const presetInput = CORRIDOR_DEMAND[corridorId];
-    if (presetInput) {
-      const results = scoreCorridors([presetInput]);
-      const score = results[0];
-      await setCached(cacheKey, score, 86400);
-      return NextResponse.json(score);
+    // === PRESET CORRIDOR — use known county FIPS to pull CSV data ===
+    const preset = PRESET_CORRIDORS[corridorId];
+    if (preset) {
+      const input = buildScoringInputFromCSV(corridorId, preset.state, preset.county);
+      if (input) {
+        const results = scoreCorridors([input]);
+        const score = results[0];
+        await setCached(cacheKey, score, 86400);
+        return NextResponse.json(score);
+      }
+      // CSV data not available — try fallback JSON
+      const fallback = getFallback(corridorId);
+      if (fallback) {
+        return NextResponse.json(fallback.score);
+      }
     }
 
-    // === DYNAMIC SEARCH CORRIDOR ===
+    // === DYNAMIC SEARCH CORRIDOR — resolve FIPS from coordinates, then CSV lookup ===
     if (center) {
       const [lng, lat] = center;
 
-      // Fetch Census data for this location
       const censusResult = await fetchDynamicCensusTracts(lat, lng);
 
       let demandInput: ScoringInput;
@@ -80,7 +100,7 @@ export async function POST(request: NextRequest) {
           foodDesert: metrics.foodDesert,
         };
       } else {
-        // Absolute fallback — use national median estimates
+        // No CSV data for this county — use national median estimates
         demandInput = {
           corridorId,
           zeroCar: 22,
@@ -88,6 +108,7 @@ export async function POST(request: NextRequest) {
           poverty: 18,
           foodDesert: 0,
         };
+        console.warn(`No Census CSV data for coordinates ${lat},${lng}. Using national estimates.`);
       }
 
       const results = scoreCorridors([demandInput]);
@@ -109,7 +130,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Analysis error:', error);
 
-    // Serve fallback on any error
     try {
       const { corridorId } = await request.clone().json();
       const fallback = getFallback(corridorId);
