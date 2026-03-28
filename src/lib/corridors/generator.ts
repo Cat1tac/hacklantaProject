@@ -36,9 +36,14 @@ export function corridorFromGeocoderResult(result: {
   let radiusKm = 1.0;
   if (result.bbox) {
     const [west, south, east, north] = result.bbox;
-    const corner = turf.point([west, south]);
-    const opposite = turf.point([east, north]);
-    const diag = turf.distance(corner, opposite, { units: 'kilometers' });
+    // Approximate diagonal distance in km using Haversine
+    const toRad = (d: number) => (d * Math.PI) / 180;
+    const dLat = toRad(north - south);
+    const dLon = toRad(east - west);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(south)) * Math.cos(toRad(north)) * Math.sin(dLon / 2) ** 2;
+    const diag = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     radiusKm = Math.max(0.5, Math.min(diag / 2, 3.0)); // clamp 0.5-3km
   }
 
