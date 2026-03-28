@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "corridor-1",
+        "name": "South DeKalb",
+        "city": "Atlanta",
+        "currentService": "Bus Route 116 (45min headway)",
+        "description": "Low-frequency bus service connecting residential neighborhoods to employment centers. High car-dependency despite low car ownership."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-84.2645, 33.7200],
+          [-84.2400, 33.7200],
+          [-84.2400, 33.7450],
+          [-84.2645, 33.7450],
+          [-84.2645, 33.7200]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "corridor-2",
+        "name": "English Avenue / Vine City",
+        "city": "Atlanta",
+        "currentService": "Bus Route 52 (35min headway)",
+        "description": "Historic westside neighborhoods with significant transit gaps despite proximity to downtown employment. Food desert overlay."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-84.4200, 33.7550],
+          [-84.3980, 33.7550],
+          [-84.3980, 33.7700],
+          [-84.4200, 33.7700],
+          [-84.4200, 33.7550]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "corridor-3",
+        "name": "Mechanicsville / Pittsburgh",
+        "city": "Atlanta",
+        "currentService": "Bus Route 83 (40min headway)",
+        "description": "South Atlanta corridor with high poverty concentration. Major employment access gap to Hartsfield-Jackson airport zone."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-84.4100, 33.7250],
+          [-84.3850, 33.7250],
+          [-84.3850, 33.7450],
+          [-84.4100, 33.7450],
+          [-84.4100, 33.7250]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "corridor-4",
+        "name": "Clarkston / North Clarkston",
+        "city": "Atlanta",
+        "currentService": "Bus Route 125 (50min headway)",
+        "description": "Refugee resettlement community with extremely low car ownership. Long headways and no weekend service despite high need."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-84.2650, 33.8050],
+          [-84.2400, 33.8050],
+          [-84.2400, 33.8250],
+          [-84.2650, 33.8250],
+          [-84.2650, 33.8050]
+        ]]
+      }
+    }
+  ]
+}

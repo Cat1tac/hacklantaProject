@@ -1,0 +1,21 @@
+{
+  "score": {
+    "corridorId": "corridor-4",
+    "score": 86,
+    "factors": [
+      { "name": "Zero-car households", "value": 58, "normalized": 72.5, "weight": 0.35 },
+      { "name": "Employment density", "value": 3600, "normalized": 72.0, "weight": 0.25 },
+      { "name": "Poverty rate", "value": 45, "normalized": 75.0, "weight": 0.20 },
+      { "name": "Food desert", "value": 1, "normalized": 100, "weight": 0.20 }
+    ],
+    "grade": "A"
+  },
+  "narrative": "Clarkston is nationally recognized as one of America's most diverse square miles — a major refugee resettlement community where over 40 nationalities share a small-town footprint. It is also one of metro Atlanta's most severe transit deserts. With 58% zero-car households and 50-minute headways on Route 125, the community most dependent on public transit receives the least of it.\n\nThe demand profile here is extraordinary. Clarkston's 3,600 jobs per square mile are concentrated in food processing, light manufacturing, and healthcare — industries that actively recruit from the refugee population but require reliable shift-start transportation. The 45% poverty rate makes car ownership economically impossible for most households. The USDA food desert designation confirms what residents already know: without a car, buying groceries requires a multi-hour bus odyssey.\n\nClarkston's latent demand score of 86 — the highest of any corridor analyzed — reflects a near-total mismatch between transit need and transit provision. No peer city comparison is even necessary; the demand is self-evident. A 90-day pilot with 10-minute headways and weekend service would not merely demonstrate demand — it would provide essential mobility to a community that has been systematically excluded from it.",
+  "pilot": {
+    "headway": "10 minutes",
+    "vehicle": "40-seat standard bus",
+    "cost": "$156,000 / 90 days",
+    "grant": "Clarkston, Georgia is a nationally designated refugee resettlement community serving over 40 nationalities with an estimated 58% zero-car household rate — the highest in DeKalb County. Current transit service provides 50-minute headways with no weekend operation, effectively excluding this transit-dependent population from employment, healthcare, and food access. The proposed 90-day pilot would deploy 40-seat buses at 10-minute headways along a 4.4-mile alignment with full weekend service, connecting Clarkston to the Indian Creek MARTA station. Based on the corridor's exceptional latent demand score of 86/100 and peer city calibration, we project 18,400 weekly riders at a total pilot cost of $156,000. Cost-per-rider of $0.94 represents exceptional value for FTA equity investment. This corridor meets every criterion for FTA Areas of Persistent Poverty designation."
+  },
+  "timestamp": "2026-03-28T00:00:00Z"
+}

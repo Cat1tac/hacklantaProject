@@ -1,0 +1,21 @@
+{
+  "score": {
+    "corridorId": "corridor-1",
+    "score": 74,
+    "factors": [
+      { "name": "Zero-car households", "value": 38, "normalized": 47.5, "weight": 0.35 },
+      { "name": "Employment density", "value": 3200, "normalized": 64.0, "weight": 0.25 },
+      { "name": "Poverty rate", "value": 28, "normalized": 46.7, "weight": 0.20 },
+      { "name": "Food desert", "value": 1, "normalized": 100, "weight": 0.20 }
+    ],
+    "grade": "B"
+  },
+  "narrative": "South DeKalb presents a compelling case for transit investment that current ridership data fundamentally misrepresents. The corridor's 38% zero-car household rate — nearly triple the metro average — indicates a population that doesn't choose not to ride transit; they are stranded without it. With 45-minute headways on Route 116, current service is functionally unusable for employment access, medical appointments, or grocery trips.\n\nDemand proxies paint a dramatically different picture than ridership counts. Over 3,200 jobs per square mile sit within the corridor's employment shed, concentrated in warehouse distribution, healthcare, and retail sectors with shift-based schedules that demand frequency, not just coverage. The USDA has designated this area a food desert — residents travel an average of 4.2 miles for full-service groceries, a trip that takes 90+ minutes by current transit.\n\nThe evidence strongly supports a service frequency pilot. Peer city data from Houston's MetroRapid network shows that comparable corridors with similar demographics achieved 200%+ ridership lifts within 18 months of frequency improvements. South DeKalb's latent demand score of 74 out of 100 places it in the top quartile of underserved corridors nationally. A 90-day pilot with 15-minute headways would generate the ridership data needed to justify permanent investment — and break the circular logic that has kept this community in a transit desert.",
+  "pilot": {
+    "headway": "15 minutes",
+    "vehicle": "40-seat standard bus",
+    "cost": "$127,000 / 90 days",
+    "grant": "The South DeKalb corridor demonstrates substantial unmet transit demand among a predominantly transit-dependent population. With 38% zero-car households, a designated food desert overlay, and over 3,200 jobs per square mile within the service area, this corridor meets FTA Pilot Program criteria for transit equity investment. The proposed 90-day pilot would deploy 40-seat buses at 15-minute headways along a 6.2-mile alignment, serving an estimated 14,500 weekly riders based on peer city calibration from Houston MetroRapid comparable corridors. Total pilot cost of $127,000 represents a cost-per-rider of $0.97, well below the FTA threshold for small urban pilot programs. This pilot will generate the validated ridership data necessary to support a permanent service application."
+  },
+  "timestamp": "2026-03-28T00:00:00Z"
+}

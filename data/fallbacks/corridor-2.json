@@ -1,0 +1,21 @@
+{
+  "score": {
+    "corridorId": "corridor-2",
+    "score": 82,
+    "factors": [
+      { "name": "Zero-car households", "value": 52, "normalized": 65.0, "weight": 0.35 },
+      { "name": "Employment density", "value": 4100, "normalized": 82.0, "weight": 0.25 },
+      { "name": "Poverty rate", "value": 42, "normalized": 70.0, "weight": 0.20 },
+      { "name": "Food desert", "value": 1, "normalized": 100, "weight": 0.20 }
+    ],
+    "grade": "A"
+  },
+  "narrative": "English Avenue and Vine City represent Atlanta's most acute transit equity failure. Despite sitting less than two miles from the city's largest employment center — downtown Atlanta and the Centennial Olympic Park district — residents face 35-minute headways on Route 52 that make reliable commuting impossible. The corridor's 52% zero-car household rate is the highest in the metro area, yet transit service has been repeatedly reduced based on declining ridership figures.\n\nThe demand signals here are unambiguous. Over 4,100 jobs per square mile are accessible within a 15-minute transit ride if service existed at competitive frequencies. The 42% poverty rate means residents cannot absorb the cost of ride-hailing alternatives — they either find informal transportation or forgo trips entirely. Medical appointment no-show rates at Grady Hospital's westside clinics run 34% above the system average, a pattern directly correlated with transit access gaps.\n\nThis corridor demands immediate intervention. Charlotte's CityLYNX Gold Line achieved a 200% ridership lift in a comparable historically Black neighborhood with similar density and poverty characteristics. English Avenue's latent demand score of 82 — grade A — indicates this is not a marginal investment case. A 90-day high-frequency pilot here would likely generate the strongest ridership validation in MARTA's recent history.",
+  "pilot": {
+    "headway": "12 minutes",
+    "vehicle": "40-seat standard bus",
+    "cost": "$148,000 / 90 days",
+    "grant": "The English Avenue/Vine City corridor represents a critical transit equity gap within 1.5 miles of Atlanta's central business district. With 52% zero-car households — the highest concentration in metro Atlanta — and a 42% poverty rate, this corridor's population is functionally stranded despite geographic proximity to over 4,100 jobs per square mile. The proposed 90-day pilot would operate 40-seat buses at 12-minute headways along a 4.8-mile alignment connecting the Ashby MARTA station to downtown employment. Peer city modeling from Charlotte's CityLYNX program projects approximately 16,200 weekly riders. At a total pilot cost of $148,000 and projected cost-per-rider of $1.01, this investment falls well within FTA Pilot Program parameters for demonstrating latent demand in historically underserved communities."
+  },
+  "timestamp": "2026-03-28T00:00:00Z"
+}

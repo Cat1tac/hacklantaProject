@@ -1,0 +1,35 @@
+[
+  {
+    "city": "Houston",
+    "corridor": "University Line (MetroRapid)",
+    "beforeRidership": 4200,
+    "afterRidership": 12800,
+    "headwayBefore": 30,
+    "headwayAfter": 10,
+    "year": 2015,
+    "ridershipLift": 204,
+    "notes": "Houston's complete network redesign replaced coverage-focused routes with frequent corridors. The University Line saw a 204% ridership increase within 18 months of frequency improvements."
+  },
+  {
+    "city": "Charlotte",
+    "corridor": "CityLYNX Gold Line Phase 2",
+    "beforeRidership": 1800,
+    "afterRidership": 5400,
+    "headwayBefore": 40,
+    "headwayAfter": 12,
+    "year": 2018,
+    "ridershipLift": 200,
+    "notes": "Charlotte invested in streetcar extension through historically underserved West End neighborhoods. Ridership tripled with consistent 12-minute headways and weekend service addition."
+  },
+  {
+    "city": "Columbus",
+    "corridor": "CMAX High Street BRT",
+    "beforeRidership": 3100,
+    "afterRidership": 7200,
+    "headwayBefore": 25,
+    "headwayAfter": 10,
+    "year": 2020,
+    "ridershipLift": 132,
+    "notes": "Columbus launched Ohio's first BRT line along High Street corridor. Despite COVID-era launch, BRT achieved 132% ridership lift over the local route it replaced, demonstrating latent demand even under adverse conditions."
+  }
+]

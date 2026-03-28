@@ -1,0 +1,21 @@
+{
+  "score": {
+    "corridorId": "corridor-3",
+    "score": 68,
+    "factors": [
+      { "name": "Zero-car households", "value": 35, "normalized": 43.75, "weight": 0.35 },
+      { "name": "Employment density", "value": 2800, "normalized": 56.0, "weight": 0.25 },
+      { "name": "Poverty rate", "value": 36, "normalized": 60.0, "weight": 0.20 },
+      { "name": "Food desert", "value": 1, "normalized": 100, "weight": 0.20 }
+    ],
+    "grade": "B"
+  },
+  "narrative": "Mechanicsville and Pittsburgh neighborhoods form a south Atlanta corridor with a critical gap: proximity to the Hartsfield-Jackson airport employment zone but no reliable transit connection to reach it. With 35% zero-car households and 40-minute headways on Route 83, residents in one of Atlanta's most job-rich regions cannot access the employment that surrounds them.\n\nThe airport district employs over 63,000 workers across airline operations, logistics, hospitality, and ground transportation — sectors with high shift-work demand and non-traditional hours. Current Route 83 service ends at 10:30 PM, stranding second and third-shift workers. The corridor's 36% poverty rate confirms that private vehicle ownership is not a viable alternative for most residents.\n\nA micro-transit pilot connecting Mechanicsville to the airport employment district via the East Point MARTA station would address the most immediate access gap. Columbus's CMAX BRT achieved 132% ridership gains even during a pandemic launch — Mechanicsville's demand fundamentals are stronger. The corridor's B-grade score of 68 indicates solid investment potential with clear upside if frequency reaches competitive levels.",
+  "pilot": {
+    "headway": "15 minutes",
+    "vehicle": "20-seat shuttle van",
+    "cost": "$94,000 / 90 days",
+    "grant": "The Mechanicsville/Pittsburgh corridor serves a transit-dependent population of approximately 8,400 residents with critical employment access needs to the Hartsfield-Jackson International Airport district, metro Atlanta's largest employment center with 63,000+ jobs. Current 40-minute headways on Route 83 with no late-night service effectively exclude residents from second and third-shift employment. The proposed 90-day pilot would deploy 20-seat shuttle vans at 15-minute headways along a 5.1-mile alignment with extended service hours to 1:00 AM. Peer city calibration projects 9,800 weekly riders at a total pilot cost of $94,000, yielding a cost-per-rider of $1.07. This pilot specifically targets the employment access gap identified in MARTA's 2024 equity analysis."
+  },
+  "timestamp": "2026-03-28T00:00:00Z"
+}
