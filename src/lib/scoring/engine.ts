@@ -4,8 +4,8 @@ import type { ScoringInput, CorridorScore, DemandFactor } from './types';
 const WEIGHTS = {
   zeroCar: 0.35,
   employment: 0.25,
-  poverty: 0.20,
-  foodDesert: 0.20,
+  poverty: 0.30,
+  foodDesert: 0.10,
 };
 
 /**

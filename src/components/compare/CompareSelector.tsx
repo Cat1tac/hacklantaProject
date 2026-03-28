@@ -1,60 +1,87 @@
 'use client';
 
+import SearchBar from '@/components/map/SearchBar';
+
+interface SearchResult {
+  id: string;
+  place_name: string;
+  center: [number, number];
+  bbox?: [number, number, number, number];
+}
+
 interface CompareSelectorProps {
   corridors: Array<{ id: string; name: string }>;
-  selectedA: string | null;
-  selectedB: string | null;
-  onSelectA: (id: string) => void;
-  onSelectB: (id: string) => void;
+  nameA: string;
+  nameB: string;
+  onSearchA: (result: SearchResult) => void;
+  onSearchB: (result: SearchResult) => void;
+  onPresetA: (id: string) => void;
+  onPresetB: (id: string) => void;
 }
 
 export default function CompareSelector({
   corridors,
-  selectedA,
-  selectedB,
-  onSelectA,
-  onSelectB,
+  nameA,
+  nameB,
+  onSearchA,
+  onSearchB,
+  onPresetA,
+  onPresetB,
 }: CompareSelectorProps) {
   return (
-    <div className="flex items-center gap-4 mb-8">
-      <div className="flex-1">
-        <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5 block">
-          Corridor A
-        </label>
-        <select
-          value={selectedA || ''}
-          onChange={(e) => onSelectA(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary"
-        >
-          <option value="">Select corridor...</option>
-          {corridors.map((c) => (
-            <option key={c.id} value={c.id} disabled={c.id === selectedB}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="mb-8">
+      <div className="flex items-start gap-4">
+        {/* Side A */}
+        <div className="flex-1">
+          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">
+            Corridor A
+          </label>
+          <SearchBar onSelect={onSearchA} />
+          {nameA && (
+            <p className="mt-2 text-sm font-semibold text-primary">{nameA}</p>
+          )}
+          {/* Preset quick-select */}
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {corridors.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => onPresetA(c.id)}
+                className="px-2.5 py-1 text-[11px] font-medium text-gray-500 bg-gray-100 hover:bg-primary-50 hover:text-primary rounded-lg transition-colors"
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
+        </div>
 
-      <div className="pt-5">
-        <span className="text-sm font-bold text-gray-300">vs</span>
-      </div>
+        {/* VS divider */}
+        <div className="pt-8">
+          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+            <span className="text-sm font-bold text-gray-400">vs</span>
+          </div>
+        </div>
 
-      <div className="flex-1">
-        <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5 block">
-          Corridor B
-        </label>
-        <select
-          value={selectedB || ''}
-          onChange={(e) => onSelectB(e.target.value)}
-          className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary"
-        >
-          <option value="">Select corridor...</option>
-          {corridors.map((c) => (
-            <option key={c.id} value={c.id} disabled={c.id === selectedA}>
-              {c.name}
-            </option>
-          ))}
-        </select>
+        {/* Side B */}
+        <div className="flex-1">
+          <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">
+            Corridor B
+          </label>
+          <SearchBar onSelect={onSearchB} />
+          {nameB && (
+            <p className="mt-2 text-sm font-semibold text-accent">{nameB}</p>
+          )}
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {corridors.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => onPresetB(c.id)}
+                className="px-2.5 py-1 text-[11px] font-medium text-gray-500 bg-gray-100 hover:bg-accent/10 hover:text-accent rounded-lg transition-colors"
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

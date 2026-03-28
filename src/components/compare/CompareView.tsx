@@ -24,8 +24,8 @@ export default function CompareView({
   if (!scoreA && !scoreB) {
     return (
       <div className="text-center py-16 text-gray-400">
-        <p className="text-lg font-medium">Select two corridors to compare</p>
-        <p className="text-sm mt-1">Choose from the dropdowns above</p>
+        <p className="text-lg font-medium">Search or select two corridors</p>
+        <p className="text-sm mt-1">Use the search bars or preset buttons above</p>
       </div>
     );
   }
